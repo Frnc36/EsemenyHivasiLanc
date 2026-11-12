@@ -4,6 +4,11 @@
  */
 package esemenyhivasilanc;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -186,11 +191,23 @@ public class NewJFrame extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         megjelenit("formWindowClosing");
         JOptionPane.showMessageDialog(rootPane, "bezárás kezdődik");
+        String s = jTextArea1.getText();
+        try {
+            Files.writeString(Path.of("esemenyek.txt"),s);
+        } catch (IOException ex) {
+            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowClosing
-
+    //Ez a esemény már nem látszik
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        megjelenit("formWindowClosed");
-        JOptionPane.showMessageDialog(rootPane, "bezárva");
+        /**
+         * itt már nincs form
+         * esetleg források felszabadítását lehet megcsinálni
+         * adatbázis bezárás 
+         */
+        
+        /* megjelenit("formWindowClosed");
+        JOptionPane.showMessageDialog(rootPane, "bezárva"); */
     }//GEN-LAST:event_formWindowClosed
 
     void megjelenit(String s) {
